@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "485876318479",
+    "project_id": "lifegiver-batasan",
+    "storage_bucket": "lifegiver-batasan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485876318479:android:61843cc6e7b6226c92fe7a",
+        "android_client_info": {
+          "package_name": "com.batasan.lifegiver_batasan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485876318479-gs590nmug9gi7456kol6vdssfp23jcdf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.batasan.lifegiver_batasan",
+            "certificate_hash": "a321db6bab8743ee70df17053a650e4686bed505"
+          }
+        },
+        {
+          "client_id": "485876318479-s010i06lc318n9qbpocjna8kf80ii9ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCPQLywyCCtZjkHK-bWo271dhGlfBtmsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485876318479-s010i06lc318n9qbpocjna8kf80ii9ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

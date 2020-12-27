@@ -1,11 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lifegiver_batasan/ui/router.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/login_screen.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/startup_view.dart';
 
+import 'locator.dart';
+import 'managers/dialog_manager.dart';
+import 'services/dialog_service.dart';
+import 'services/navigation_service.dart';
 import 'ui/screens/home/home_screen.dart';
 
 
-void main() {
+void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
+  // Register all the models and services before the app starts
+  setupLocator();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
     runApp(MyApp());
   });
@@ -17,6 +28,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+        builder: (context, child) => Navigator(
+          key: locator<DialogService>().dialogNavigationKey,
+          onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => DialogManager(child: child)),
+        ),
+      navigatorKey: locator<NavigationService>().navigationKey,
       theme: ThemeData(
           primarySwatch: Colors.amber,
           appBarTheme: const AppBarTheme(
@@ -29,7 +46,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
           )),
-      home: HomeScreen(),
+      home: StartUpView(),
+      onGenerateRoute: generateRoute,
     );
   }
 }

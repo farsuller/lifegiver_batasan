@@ -83,6 +83,7 @@ class _InputFieldState extends State<InputField> {
                     if (widget.nextFocusNode != null) {
                       widget.nextFocusNode.requestFocus();
                     }
+                    FocusScope.of(context).unfocus();
                   },
                   obscureText: isPassword,
                   readOnly: widget.isReadOnly,

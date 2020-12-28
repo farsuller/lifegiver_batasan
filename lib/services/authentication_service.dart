@@ -52,7 +52,7 @@ class AuthenticationService {
         userRole: role,
       );
 
-      await _firestoreService.createUser(_currentUser);
+     // await _firestoreService.createUser(_currentUser);
 
       return authResult.user != null;
     } catch (e) {

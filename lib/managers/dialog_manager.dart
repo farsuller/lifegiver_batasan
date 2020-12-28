@@ -18,7 +18,7 @@ class _DialogManagerState extends State<DialogManager> {
   @override
   void initState() {
     super.initState();
-   // _dialogService.registerDialogListener(_showDialog);
+    _dialogService.registerDialogListener(_showDialog);
   }
 
   @override

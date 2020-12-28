@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lifegiver_batasan/constants/route_names.dart';
+import 'package:lifegiver_batasan/locator.dart';
 import 'package:lifegiver_batasan/models/service.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
+import 'package:lifegiver_batasan/services/navigation_service.dart';
 import 'package:lifegiver_batasan/ui/screens/service/service_screen.dart';
 import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/login_screen.dart';
 import 'package:lifegiver_batasan/ui/widgets/attendance_forms.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/tab_bar_menu.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/home_screen_vm.dart';
+import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:stacked/stacked.dart';
 
 
@@ -25,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Service service;
+    final NavigationService _navigationService = locator<NavigationService>();
 
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: ()=> HomeViewModel(),
@@ -34,9 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
             key: _scaffoldKey,
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: bgColor,
               elevation: 0,
-              leading: Image.asset("assets/lifegiver_logo.jpg", height: 25, width: 25,),
+              leading: GestureDetector(
+                onTap: (){
+                   _navigationService.navigateTo(ProfileViewRoute);
+                },
+                  child: Image.asset("assets/lifegiver_logo.jpg", height: 25, width: 25,)),
               title: TabBarMenus(),
               actions: <Widget>[
                 BusyButton(
@@ -50,55 +58,57 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            body: TabBarView(
-                children: [
-                  SingleChildScrollView(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0, top: 20.0),
-                            child: Text("Sunday Service Attendance"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  AttendanceForms()
-                                ],
+            body: SafeArea(
+              child: TabBarView(
+                  children: [
+                    SingleChildScrollView(
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0, top: 20.0),
+                              child: Text("Sunday Service Attendance"),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    AttendanceForms()
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
 
-                          // ListView.builder(
-                          //   itemCount:service.id.length,
-                          //   scrollDirection: Axis.horizontal,
-                          //   itemBuilder: (BuildContext context, int index) {
-                          //     return _buildServiceList(service);
-                          //   },
-                          // )
-                        ],
+                            // ListView.builder(
+                            //   itemCount:service.id.length,
+                            //   scrollDirection: Axis.horizontal,
+                            //   itemBuilder: (BuildContext context, int index) {
+                            //     return _buildServiceList(service);
+                            //   },
+                            // )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text("Lifegroup"),
+                    Container(
+                      child: Center(
+                        child: Text("Lifegroup"),
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text("Giving"),
+                    Container(
+                      child: Center(
+                        child: Text("Giving"),
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text("Journey"),
+                    Container(
+                      child: Center(
+                        child: Text("Journey"),
+                      ),
                     ),
-                  ),
-                ]
+                  ]
+              ),
             )
         ),
       ),

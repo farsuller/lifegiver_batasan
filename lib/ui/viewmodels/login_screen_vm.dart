@@ -44,6 +44,7 @@ class LoginViewModel extends BaseModel {
   }
 
   void navigateToSignUp() {
-    _navigationService.navigateTo(SignUpViewRoute);
+    _navigationService.replaceNavigateTo(SignUpViewRoute);
+   // _navigationService.navigateTo(SignUpViewRoute);
   }
 }

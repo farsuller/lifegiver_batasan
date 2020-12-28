@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color primaryColor = Color(0xff8BC34A);
 const Color secondaryColor = Color(0xff64DD17);
-const Color pusoBackgroundColor = Color(0xffa20025);
+const Color bgColor = Color(0xffffffff);
 
 
 class PageKeys {

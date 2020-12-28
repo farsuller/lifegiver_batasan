@@ -14,38 +14,26 @@ class SignUpViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  String _selectedLifegroup = 'Select Lifegroup';
-  String _selectedLeader = 'Select Lifegroup Leader';
-  String get selectedLifegroup => _selectedLifegroup;
-  String get selectedLeader => _selectedLeader;
-  void setSelectedLifeGroup(dynamic lifegroup) {
-    _selectedLifegroup = lifegroup;
-    notifyListeners();
-  }
-
-  void setSelectedLeader(dynamic leader){
-    _selectedLeader = leader;
-    notifyListeners();
-  }
-
   Future signUp({
     @required String email,
     @required String password,
-    @required String fullName,
   }) async {
     setBusy(true);
 
     var result = await _authenticationService.signUpWithEmail(
         email: email,
         password: password,
-        fullName: fullName,
+        fullName: null,
         role: null);
 
     setBusy(false);
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(HomeViewRoute);
+        //when signUp is success
+       // _navigationService.navigateTo(ProfileViewRoute);
+
+        _navigationService.replaceNavigateTo(ProfileViewRoute);
       } else {
         await _dialogService.showDialog(
           title: 'Sign Up Failure',

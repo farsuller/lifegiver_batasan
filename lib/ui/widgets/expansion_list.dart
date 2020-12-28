@@ -52,6 +52,7 @@ class _ExpansionListState extends State<ExpansionList> {
           ExpansionListItem(
             title: selectedValue,
             onTap: () {
+              FocusScope.of(context).unfocus();
               setState(() {
                 expanded = !expanded;
               });

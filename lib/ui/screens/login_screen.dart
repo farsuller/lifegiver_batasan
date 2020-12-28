@@ -5,6 +5,7 @@ import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 import 'package:lifegiver_batasan/ui/widgets/text_link.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/login_screen_vm.dart';
+import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 
@@ -16,11 +17,12 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
-      builder: (context, model, child) => SafeArea(
-        child: Scaffold(
-            backgroundColor: Colors.white,
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenHeight * 0.04, vertical: SizeConfig.screenHeight * 0.10),
+      builder: (context, model, child) => Scaffold(
+          backgroundColor: bgColor,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth * 0.04,
+                  vertical: SizeConfig.screenHeight * 0.05),
               child: ListView(
                 children: <Widget>[
                   SizedBox(
@@ -29,13 +31,11 @@ class LoginView extends StatelessWidget {
                   ),
                   verticalSpaceSmall,
                   InputField(
-                    textInputAction: TextInputAction.continueAction,
                     placeholder: 'Email',
                     controller: emailController,
                   ),
                   verticalSpaceSmall,
                   InputField(
-                    textInputAction: TextInputAction.done,
                     placeholder: 'Password',
                     password: true,
                     controller: passwordController,
@@ -69,8 +69,8 @@ class LoginView extends StatelessWidget {
                   )
                 ],
               ),
-            )),
-      ),
+            ),
+          )),
     );
   }
 }

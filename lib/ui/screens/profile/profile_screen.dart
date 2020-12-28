@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/locator.dart';
@@ -57,10 +58,24 @@ class ProfileScreen extends StatelessWidget{
                   controller: fullNameController,
                 ),
                 verticalSpaceSmall,
-                ExpansionList<String>(
-                        items: ['Renz', 'Renz2'],
-                        title: model.selectedLeader,
-                        onItemSelected: model.setSelectedLeader),
+                StreamBuilder<QuerySnapshot>(
+                  stream: Firestore.instance.collection("leaders").snapshots(),
+                  builder: (context, snapshot){
+                    if (!snapshot.hasData)
+                      return _loadingIndicator();
+                        else{
+                        List<String> leaders = [];
+                        for (int i = 0; i < snapshot.data.documents.length; i++){
+                          DocumentSnapshot snap = snapshot.data.documents[i];
+                          leaders.add(snap.documentID);
+                        }
+                          return ExpansionList<String>(
+                              items: leaders,
+                              title: model.selectedLeader,
+                              onItemSelected: model.setSelectedLeader);
+                        }
+                    },
+                ),
                 verticalSpaceSmall,
                 ExpansionList<String>(
                     items: ['David', 'David2'],
@@ -102,6 +117,12 @@ class ProfileScreen extends StatelessWidget{
           !model.busy ? Theme.of(context).primaryColor : Colors.grey[600],
         ),
         ),
+    );
+  }
+
+  _loadingIndicator(){
+    return Center(
+      child: CircularProgressIndicator(),
     );
   }
 }

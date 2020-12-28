@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/locator.dart';
 import 'package:lifegiver_batasan/models/service.dart';
-import 'package:lifegiver_batasan/services/authentication_service.dart';
 import 'package:lifegiver_batasan/services/navigation_service.dart';
-import 'package:lifegiver_batasan/ui/screens/service/service_screen.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/login_screen.dart';
 import 'package:lifegiver_batasan/ui/widgets/attendance_forms.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/tab_bar_menu.dart';
@@ -50,11 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 BusyButton(
                   title: 'Logout',
                   busy: model.busy,
-                  onPressed: () => model.signOut().then((value) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (context) => LoginView()),
-                            (Route<dynamic> route) => false);
-                  }),
+                  onPressed: () => model.signOut()
                 ),
               ],
             ),
@@ -110,36 +103,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ]
               ),
             )
-        ),
-      ),
-    );
-  }
-
-
-  _buildServiceList(Service service) {
-    return Material(
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => ServiceInfoScreen(
-                id: service.id,
-                title: service.title,
-                description:service.description,
-                attendanceCount:service.attendanceCount,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          width: 200,
-          margin: EdgeInsets.only(left:5),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            // child: Image.network(video.thumbnailUrl, height:150 , width: 250,fit: BoxFit.cover,),
-            child: Image.asset("assets/service1.jpg", height:150 , width: 250,fit: BoxFit.cover,),
-          ),
         ),
       ),
     );

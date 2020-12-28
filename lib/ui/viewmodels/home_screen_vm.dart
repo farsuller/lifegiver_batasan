@@ -15,6 +15,7 @@ class HomeViewModel extends BaseModel {
 
   Future signOut() async {
     _authenticationService.signOutUser();
+    _navigationService.replaceNavigateTo(LoginViewRoute);
     setBusy(false);
   }
 }

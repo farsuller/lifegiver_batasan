@@ -9,7 +9,26 @@ import 'package:lifegiver_batasan/models/profile.dart';
 
 class FirestoreService {
   final CollectionReference _usersCollectionReference = Firestore.instance.collection('users');
+  final CollectionReference _leadersCollectionReference = Firestore.instance.collection('leaders');
 
+  final StreamController<List<Leaders>> _leadersController = StreamController<List<Leaders>>.broadcast();
+
+  Stream listenToPostsRealTime() {
+    // Register the handler for when the posts data changes
+    _leadersCollectionReference.snapshots().listen((postsSnapshot) {
+      if (postsSnapshot.documents.isNotEmpty) {
+        var posts = postsSnapshot.documents
+            .map((snapshot) => Leaders.fromMap(snapshot.data, snapshot.documentID))
+            .where((mappedItem) => mappedItem.documentId != null)
+            .toList();
+
+        // Add the posts onto the controller
+        _leadersController.add(posts);
+      }
+    });
+
+    return _leadersController.stream;
+  }
 
   Future createUser(BatasanUser user) async {
     try {

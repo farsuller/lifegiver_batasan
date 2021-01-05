@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lifegiver_batasan/managers/lifecycle_manager.dart';
 import 'package:lifegiver_batasan/ui/router.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/login_screen.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/startup_view.dart';
-
+import 'package:lifegiver_batasan/ui/screens/startup_view.dart';
 import 'locator.dart';
 import 'managers/dialog_manager.dart';
 import 'services/dialog_service.dart';
 import 'services/navigation_service.dart';
-import 'ui/screens/home/home_screen.dart';
+
 
 
 void main() async{
@@ -49,7 +46,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             )),
-        home: HomeScreen(),
+        home: StartUpView(),
         onGenerateRoute: generateRoute,
       ),
     );

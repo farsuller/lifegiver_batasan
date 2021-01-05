@@ -80,29 +80,31 @@ class SundayServiceProfileScreen extends StatelessWidget{
                       title: model.selectedNetwork,
                       onItemSelected: model.setSelectedNetwork):_loadingIndicator(),
                 ),
-                  ],
+
+                Align(
+                  child: RaisedButton( disabledColor:
+                  !model.busy ? Theme.of(context).primaryColor : Colors.grey[600],
+                    onPressed: () {
+                      if (!model.busy) {
+                        model.completeProfile(
+                            fullname: fullNameController.text,
+                            leader: model.selectedLeader,
+                            lifegroup: model.selectedLifegroup,
+                            network: model.selectedNetwork,
+                            platform: model.selectedPlatform
+                        );
+                      }
+                    },
+                    child: !model.busy
+                        ? Text("Save")
+                        : CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
+                  ),
+                )
+                )
+              ],
                 )
             ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: !model.busy
-              ? Icon(Icons.add)
-              : CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.white),
-          ),
-          onPressed: () {
-            if (!model.busy) {
-              model.completeProfile(
-                fullname: fullNameController.text,
-                leader: model.selectedLeader,
-                lifegroup: model.selectedLifegroup,
-                network: model.selectedNetwork,
-                platform: model.selectedPlatform
-              );
-            }
-          },
-          backgroundColor:
-          !model.busy ? Theme.of(context).primaryColor : Colors.grey[600],
         ),
         ),
     );

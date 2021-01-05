@@ -8,7 +8,6 @@ class Profile {
   final String leader;
   final String lifegroup;
   final String network;
-  final String platform;
 
   Profile({
     @required this.userId,
@@ -17,7 +16,6 @@ class Profile {
     @required this.leader,
     @required this.lifegroup,
     @required this.network,
-    @required this.platform,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +25,6 @@ class Profile {
       'leader': leader,
       'lifegroup': lifegroup,
       'network': network,
-      'platform': platform,
     };
   }
 
@@ -39,7 +36,6 @@ class Profile {
       leader: map['leader'],
       lifegroup: map['lifegroup'],
       network: map['network'],
-      platform: map['platform'],
       userId: map['userId'],
       documentId: documentId,
     );

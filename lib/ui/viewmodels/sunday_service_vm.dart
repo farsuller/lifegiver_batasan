@@ -94,7 +94,6 @@ class ProfileViewModel extends BaseModel{
           leader: leader,
           lifegroup:lifegroup,
           network: network,
-          platform: platform,
           userId: currentUser.id,
           documentId: null));
     } else {
@@ -103,7 +102,6 @@ class ProfileViewModel extends BaseModel{
         leader: leader,
         lifegroup: lifegroup,
         network: network,
-        platform: platform,
         userId: _setupProfile.userId,
         documentId: _setupProfile.documentId,
       ));

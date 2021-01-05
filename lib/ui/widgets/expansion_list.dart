@@ -52,7 +52,12 @@ class _ExpansionListState extends State<ExpansionList> {
           ExpansionListItem(
             title: selectedValue,
             onTap: () {
-              FocusScope.of(context).unfocus();
+             // FocusScope.of(context).unfocus();
+
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
               setState(() {
                 expanded = !expanded;
               });

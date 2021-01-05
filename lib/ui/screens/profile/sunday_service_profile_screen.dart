@@ -3,39 +3,41 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/locator.dart';
+import 'package:lifegiver_batasan/models/lifegroup.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/services/navigation_service.dart';
+import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
-import 'package:lifegiver_batasan/ui/viewmodels/profile_screen_vm.dart';
+import 'package:lifegiver_batasan/ui/viewmodels/sunday_service_vm.dart';
 import 'package:lifegiver_batasan/ui/widgets/expansion_list.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 
 
-class ProfileScreen extends StatelessWidget{
+class SundayServiceProfileScreen extends StatelessWidget{
 
   final NavigationService _navigationService = locator<NavigationService>();
   final Profile profile;
 
-  ProfileScreen({Key key, this.profile}) : super(key: key);
+  SundayServiceProfileScreen({Key key, this.profile}) : super(key: key);
   final fullNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
       viewModelBuilder: ()=> ProfileViewModel(),
-      onModelReady: (model){
-      },
+      onModelReady: (model)=> model.listenToData(),
       builder:(context, model, child) => Scaffold(
         backgroundColor: bgColor,
         appBar: AppBar(
           elevation: 0,
           leading: GestureDetector(
               onTap: (){
-                _navigationService.replaceNavigateTo(HomeViewRoute);
+                _navigationService.pop();
                 },
              child: Icon(Icons.arrow_back)),
         ),
@@ -46,7 +48,7 @@ class ProfileScreen extends StatelessWidget{
             child: ListView(
               children: <Widget>[
                 Text(
-                  'User Profile',
+                  'Sunday Service Profile',
                   style: TextStyle(
                     fontSize: 38,
                   ),
@@ -58,40 +60,26 @@ class ProfileScreen extends StatelessWidget{
                   controller: fullNameController,
                 ),
                 verticalSpaceSmall,
-                StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.instance.collection("leaders").snapshots(),
-                  builder: (context, snapshot){
-                    if (!snapshot.hasData)
-                      return _loadingIndicator();
-                        else{
-                        List<String> leaders = [];
-                        for (int i = 0; i < snapshot.data.documents.length; i++){
-                          DocumentSnapshot snap = snapshot.data.documents[i];
-                          leaders.add(snap.documentID);
-                        }
-                          return ExpansionList<String>(
-                              items: leaders,
-                              title: model.selectedLeader,
-                              onItemSelected: model.setSelectedLeader);
-                        }
-                    },
+              Container(
+                child: model.leaders != null ? ExpansionList<String>(
+                                items: model.leaders,
+                                title: model.selectedLeader,
+                                onItemSelected: model.setSelectedLeader):_loadingIndicator(),
+              ),
+                verticalSpaceSmall,
+                Container(
+                  child: model.lifegroup != null ? ExpansionList<dynamic>(
+                      items: model.lifegroup,
+                      title: model.selectedLifegroup,
+                      onItemSelected: model.setSelectedLifeGroup):_loadingIndicator(),
                 ),
                 verticalSpaceSmall,
-                ExpansionList<String>(
-                    items: ['David', 'David2'],
-                    title: model.selectedLifegroup,
-                    onItemSelected: model.setSelectedLifeGroup),
-                verticalSpaceSmall,
-                ExpansionList<String>(
-                    items: ['Men','Women','Young Pro', 'Youth'],
-                    title: model.selectedNetwork,
-                    onItemSelected: model.setSelectedNetwork),
-
-                verticalSpaceSmall,
-                ExpansionList<String>(
-                    items: ['Google Meet', 'Facebook'],
-                    title: model.selectedPlatform,
-                    onItemSelected: model.setSelectedPlatform),
+                Container(
+                  child: model?.network!= null ? ExpansionList<String>(
+                      items: model.network,
+                      title: model.selectedNetwork,
+                      onItemSelected: model.setSelectedNetwork):_loadingIndicator(),
+                ),
                   ],
                 )
             ),

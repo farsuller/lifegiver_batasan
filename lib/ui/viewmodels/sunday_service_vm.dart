@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/locator.dart';
-import 'package:lifegiver_batasan/models/leaders.dart';
+import 'package:lifegiver_batasan/models/lifegroup.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'package:lifegiver_batasan/services/firestore_service.dart';
@@ -28,6 +28,35 @@ class ProfileViewModel extends BaseModel{
   String get selectedLeader => _selectedLeader;
   String get selectedNetwork => _selectedNetwork;
   String get selectedPlatform => _selectedPlatform;
+
+  var _leaders;
+  List<String> get leaders => _leaders;
+
+  var _lifegroup;
+  List<dynamic> get lifegroup => _lifegroup;
+
+  var _network;
+  List<String> get network => _network;
+
+  bool doneSetup = false;
+  void listenToData() {
+    setBusy(true);
+
+    _firestoreService.listenLeadersData().listen((leadersData) {
+      _leaders = leadersData;
+     setBusy(false);
+    });
+
+    _firestoreService.listenLifegroupData().listen((lifegroupData) {
+        _lifegroup = lifegroupData;
+     setBusy(false);
+    });
+
+    _firestoreService.listenNetworkData().listen((network) {
+      _network = network;
+      setBusy(false);
+    });
+  }
 
   void setSelectedLifeGroup(dynamic lifegroup) {
     _selectedLifegroup = lifegroup;

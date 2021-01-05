@@ -4,7 +4,7 @@ import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
 import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/login_screen.dart';
 import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/signup_screen.dart';
-import 'package:lifegiver_batasan/ui/screens/profile/profile_screen.dart';
+import 'package:lifegiver_batasan/ui/screens/profile/sunday_service_profile_screen.dart';
 
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -27,7 +27,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case ProfileViewRoute:
       return _getPageRoute(
         routeName: settings.name,
-        viewToShow: ProfileScreen(),
+        viewToShow: SundayServiceProfileScreen(),
       );
     default:
       return MaterialPageRoute(

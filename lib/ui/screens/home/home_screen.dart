@@ -4,11 +4,15 @@ import 'package:lifegiver_batasan/constants/route_names.dart';
 import 'package:lifegiver_batasan/locator.dart';
 import 'package:lifegiver_batasan/models/service.dart';
 import 'package:lifegiver_batasan/services/navigation_service.dart';
+import 'package:lifegiver_batasan/ui/screens/home/widget/announcement_tile.dart';
+import 'package:lifegiver_batasan/ui/screens/home/widget/dashboard_reporting.dart';
+import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/widgets/attendance_forms.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/tab_bar_menu.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/home_screen_vm.dart';
 import 'package:lifegiver_batasan/utils/constants.dart';
+import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 
 
@@ -26,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final NavigationService _navigationService = locator<NavigationService>();
 
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -37,71 +42,38 @@ class _HomeScreenState extends State<HomeScreen> {
             appBar: AppBar(
               backgroundColor: bgColor,
               elevation: 0,
-              leading: GestureDetector(
-                onTap: (){
-                   _navigationService.navigateTo(ProfileViewRoute);
-                },
-                  child: Image.asset("assets/lifegiver_logo.jpg", height: 25, width: 25,)),
-              title: TabBarMenus(),
+              leading: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset("assets/lifegiver_logo.jpg",),
+                  )),
+             // title: TabBarMenus(),
               actions: <Widget>[
-                BusyButton(
-                  title: 'Logout',
-                  busy: model.busy,
-                  onPressed: () => model.signOut()
-                ),
+                GestureDetector(
+                  onTap:() => model.signOut(),
+                    child: Icon(Icons.logout)),
+                SizedBox(width: 10.0,)
               ],
             ),
             body: SafeArea(
-              child: TabBarView(
-                  children: [
-                    SingleChildScrollView(
+              child: SingleChildScrollView(
                       child: Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 8.0, top: 20.0),
-                              child: Text("Sunday Service Attendance"),
+                              padding: EdgeInsets.only(
+                                  left: SizeConfig.screenWidth * 0.04,
+                                  bottom: 10.0),
+                              child: Text("Announcements",style: TextStyle(fontSize: 20.0),),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                child: Column(
-                                  children: [
-                                    AttendanceForms()
-                                  ],
-                                ),
-                              ),
-                            ),
+                            AnnouncementTile(),
+                            DashboardReporting(navigationService: _navigationService)
 
-                            // ListView.builder(
-                            //   itemCount:service.id.length,
-                            //   scrollDirection: Axis.horizontal,
-                            //   itemBuilder: (BuildContext context, int index) {
-                            //     return _buildServiceList(service);
-                            //   },
-                            // )
                           ],
                         ),
                       ),
                     ),
-                    Container(
-                      child: Center(
-                        child: Text("Lifegroup"),
-                      ),
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text("Giving"),
-                      ),
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text("Journey"),
-                      ),
-                    ),
-                  ]
-              ),
             )
         ),
       ),

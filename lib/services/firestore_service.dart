@@ -3,31 +3,45 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:lifegiver_batasan/models/batasan_user.dart';
-import 'package:lifegiver_batasan/models/leaders.dart';
+import 'package:lifegiver_batasan/models/lifegroup.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 
 
 class FirestoreService {
   final CollectionReference _usersCollectionReference = Firestore.instance.collection('users');
   final CollectionReference _leadersCollectionReference = Firestore.instance.collection('leaders');
+  final CollectionReference _networkCollectionReference = Firestore.instance.collection('network');
 
-  final StreamController<List<Leaders>> _leadersController = StreamController<List<Leaders>>.broadcast();
+  final StreamController<List<String>> _leadersController = StreamController<List<String>>.broadcast();
+  final StreamController<List<String>> _networkController = StreamController<List<String>>.broadcast();
+  final StreamController<List<dynamic>> _lifegroupController = StreamController<List<dynamic>>.broadcast();
+  Stream listenLeadersData(){
+    _leadersCollectionReference.snapshots().listen((event) {
+      var leaders = event.documents.map((e) => e.documentID).toList();
 
-  Stream listenToPostsRealTime() {
-    // Register the handler for when the posts data changes
-    _leadersCollectionReference.snapshots().listen((postsSnapshot) {
-      if (postsSnapshot.documents.isNotEmpty) {
-        var posts = postsSnapshot.documents
-            .map((snapshot) => Leaders.fromMap(snapshot.data, snapshot.documentID))
-            .where((mappedItem) => mappedItem.documentId != null)
-            .toList();
-
-        // Add the posts onto the controller
-        _leadersController.add(posts);
-      }
+      _leadersController.add(leaders);
     });
-
     return _leadersController.stream;
+  }
+
+  Stream listenLifegroupData(){
+    _leadersCollectionReference.snapshots().listen((event) {
+      var lifegroup = event.documents
+          .map((snapshot) => snapshot["lifegroup"])
+          .toList();
+      print("your lifegroup is $lifegroup");
+      _lifegroupController.add(lifegroup);
+    });
+    return _lifegroupController.stream;
+  }
+
+  Stream listenNetworkData(){
+    _networkCollectionReference.snapshots().listen((event) {
+      var leaders = event.documents.map((e) => e.documentID).toList();
+
+      _networkController.add(leaders);
+    });
+    return _networkController.stream;
   }
 
   Future createUser(BatasanUser user) async {

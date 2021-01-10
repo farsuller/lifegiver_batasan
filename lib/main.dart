@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lifegiver_batasan/managers/lifecycle_manager.dart';
 import 'package:lifegiver_batasan/ui/router.dart';
+import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
 import 'package:lifegiver_batasan/ui/screens/startup_view.dart';
 import 'locator.dart';
 import 'managers/dialog_manager.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             )),
-        home: StartUpView(),
+        home: HomeScreen(),
         onGenerateRoute: generateRoute,
       ),
     );

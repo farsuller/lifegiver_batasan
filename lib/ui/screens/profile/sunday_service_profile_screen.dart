@@ -1,26 +1,19 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/constants/route_names.dart';
-import 'package:lifegiver_batasan/locator.dart';
-import 'package:lifegiver_batasan/models/lifegroup.dart';
+import 'package:get/get.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
-import 'package:lifegiver_batasan/services/navigation_service.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/sunday_service_vm.dart';
 import 'package:lifegiver_batasan/ui/widgets/expansion_list.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
-import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
-import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 
 
 class SundayServiceProfileScreen extends StatelessWidget{
 
-  final NavigationService _navigationService = locator<NavigationService>();
   final Profile profile;
 
   SundayServiceProfileScreen({Key key, this.profile}) : super(key: key);
@@ -37,7 +30,7 @@ class SundayServiceProfileScreen extends StatelessWidget{
           elevation: 0,
           leading: GestureDetector(
               onTap: (){
-                _navigationService.pop();
+                Get.off(SundayServiceProfileScreen());
                 },
              child: Icon(Icons.arrow_back)),
         ),

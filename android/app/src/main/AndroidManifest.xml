@@ -10,7 +10,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="lifegiver_batasan"
+        android:label="Batasan Reporting"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

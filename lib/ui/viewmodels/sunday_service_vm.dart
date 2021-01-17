@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/constants/route_names.dart';
+import 'package:get/get.dart';
 import 'package:lifegiver_batasan/locator.dart';
-import 'package:lifegiver_batasan/models/lifegroup.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'package:lifegiver_batasan/services/firestore_service.dart';
-import 'package:lifegiver_batasan/services/navigation_service.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/base_model.dart';
 
 
@@ -13,7 +11,6 @@ class ProfileViewModel extends BaseModel{
 
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final DialogService _dialogService = locator<DialogService>();
-  final NavigationService _navigationService = locator<NavigationService>();
 
   Profile _setupProfile;
 
@@ -120,8 +117,7 @@ class ProfileViewModel extends BaseModel{
         description: 'Your profile has been created for immediate report.',
       );
     }
-
-    _navigationService.navigateTo(HomeViewRoute);
+    Get.toNamed("/home");
   }
 
   void setProfileSetup(Profile profileSetup) {

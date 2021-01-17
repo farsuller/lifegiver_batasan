@@ -6,7 +6,7 @@ import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 import 'package:lifegiver_batasan/ui/widgets/text_link.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/login_screen_vm.dart';
-import 'package:lifegiver_batasan/utils/constants.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/constants/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 

@@ -35,8 +35,6 @@ class AuthenticationService {
   Future signUpWithEmail({
     @required String email,
     @required String password,
-    @required String fullName,
-    @required String role,
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -48,11 +46,9 @@ class AuthenticationService {
       _currentUser = BatasanUser(
         id: authResult.user.uid,
         email: email,
-        fullName: fullName,
-        userRole: role,
       );
 
-     // await _firestoreService.createUser(_currentUser);
+      await _firestoreService.createUser(_currentUser);
 
       return authResult.user != null;
     } catch (e) {

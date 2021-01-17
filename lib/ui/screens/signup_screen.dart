@@ -1,14 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/constants/route_names.dart';
-import 'package:lifegiver_batasan/locator.dart';
-import 'package:lifegiver_batasan/services/navigation_service.dart';
+import 'package:get/get.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
-import 'package:lifegiver_batasan/ui/widgets/expansion_list.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/signup_screen_vm.dart';
-import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 
@@ -16,7 +12,6 @@ import 'shared/ui_helpers.dart';
 
 
 class SignUpView extends StatelessWidget {
-  final NavigationService _navigationService = locator<NavigationService>();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -30,7 +25,7 @@ class SignUpView extends StatelessWidget {
           elevation: 0,
           leading: GestureDetector(
             onTap: (){
-              _navigationService.replaceNavigateTo(LoginViewRoute);
+              Get.offNamed("/login");
             },
             child: Icon(Icons.arrow_back)),),
         body: Container(
@@ -43,10 +38,7 @@ class SignUpView extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 38,
-                    ),
+                    'Sign Up', style: TextStyle(fontSize: 38,),
                   ),
                   verticalSpaceLarge,
                   InputField(

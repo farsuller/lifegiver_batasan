@@ -1,17 +1,15 @@
 
 import 'package:flutter/foundation.dart';
-import 'package:lifegiver_batasan/constants/route_names.dart';
+import 'package:get/get.dart';
 import 'package:lifegiver_batasan/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
-import 'package:lifegiver_batasan/services/navigation_service.dart';
 import 'base_model.dart';
 
 class LoginViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
-  final NavigationService _navigationService = locator<NavigationService>();
 
   Future login({
     @required String email,
@@ -28,7 +26,7 @@ class LoginViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(HomeViewRoute);
+        Get.toNamed("/home");
       } else {
         await _dialogService.showDialog(
           title: 'Login Failure',
@@ -44,7 +42,7 @@ class LoginViewModel extends BaseModel {
   }
 
   void navigateToSignUp() {
-    _navigationService.replaceNavigateTo(SignUpViewRoute);
+    Get.offNamed("/signUp");
    // _navigationService.navigateTo(SignUpViewRoute);
   }
 }

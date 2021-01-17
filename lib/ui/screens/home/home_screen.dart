@@ -1,17 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/constants/route_names.dart';
-import 'package:lifegiver_batasan/locator.dart';
-import 'package:lifegiver_batasan/models/service.dart';
-import 'package:lifegiver_batasan/services/navigation_service.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/announcement_tile.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/dashboard_reporting.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
-import 'package:lifegiver_batasan/ui/widgets/attendance_forms.dart';
-import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
-import 'package:lifegiver_batasan/ui/widgets/tab_bar_menu.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/home_screen_vm.dart';
-import 'package:lifegiver_batasan/utils/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 
@@ -31,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    final NavigationService _navigationService = locator<NavigationService>();
 
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: ()=> HomeViewModel(),
@@ -68,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Text("Announcements",style: TextStyle(fontSize: 20.0),),
                             ),
                             AnnouncementTile(),
-                            DashboardReporting(navigationService: _navigationService)
+                            DashboardReporting()
 
                           ],
                         ),

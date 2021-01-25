@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
@@ -14,6 +16,7 @@ import 'package:stacked/stacked.dart';
 class LoginView extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool emailInvalid = false;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(

@@ -11,6 +11,7 @@ class FirestoreService {
   final CollectionReference _usersCollectionReference = Firestore.instance.collection('users');
   final CollectionReference _leadersCollectionReference = Firestore.instance.collection('leaders');
   final CollectionReference _networkCollectionReference = Firestore.instance.collection('network');
+  final CollectionReference _platformCollectionReference = Firestore.instance.collection('platforms');
 
   final StreamController<List<String>> _leadersController = StreamController<List<String>>.broadcast();
   final StreamController<List<String>> _networkController = StreamController<List<String>>.broadcast();
@@ -37,9 +38,17 @@ class FirestoreService {
 
   Stream listenNetworkData(){
     _networkCollectionReference.snapshots().listen((event) {
-      var leaders = event.documents.map((e) => e.documentID).toList();
+      var network = event.documents.map((e) => e.documentID).toList();
 
-      _networkController.add(leaders);
+      _networkController.add(network);
+    });
+    return _networkController.stream;
+  }
+  Stream listenPlatformData(){
+    _platformCollectionReference.snapshots().listen((event) {
+      var platform = event.documents.map((e) => e.documentID).toList();
+
+      _networkController.add(platform);
     });
     return _networkController.stream;
   }

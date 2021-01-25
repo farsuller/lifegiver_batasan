@@ -35,6 +35,9 @@ class ProfileViewModel extends BaseModel{
   var _network;
   List<String> get network => _network;
 
+  var _platform;
+  List<String> get platform => _platform;
+
   bool doneSetup = false;
   void listenToData() {
     setBusy(true);
@@ -51,6 +54,11 @@ class ProfileViewModel extends BaseModel{
 
     _firestoreService.listenNetworkData().listen((network) {
       _network = network;
+      setBusy(false);
+    });
+
+    _firestoreService.listenPlatformData().listen((platform) {
+      _platform = platform;
       setBusy(false);
     });
   }

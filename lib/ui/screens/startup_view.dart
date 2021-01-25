@@ -1,9 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/managers/dialog_manager.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/startup_view_model.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/constants/constants.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 

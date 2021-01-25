@@ -38,7 +38,7 @@ dependencies:
   get_it: ^5.0.3
 
   #get
-  get: 3.24.0
+  get: ^3.24.0
   # provider
   provider: ^4.3.2+3
   # Stacked Arch
@@ -50,6 +50,13 @@ dependencies:
 
   velocity_x: ^0.3.4
   connectivity: ^0.4.6+2
+
+#camera detector dependency package
+  camera: ^0.5.8+2
+  firebase_ml_vision: ^0.6.0
+  path_provider: ^1.6.11
+  tflite_flutter: ^0.4.1
+  image: ^2.1.12
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +75,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/mobilefacenet.tflite
     - lifegiver_logo.jpg
     - service1.jpg
     - service2.jpg

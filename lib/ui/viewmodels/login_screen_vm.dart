@@ -5,6 +5,7 @@ import 'package:lifegiver_batasan/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'base_model.dart';
+import 'package:flutter/material.dart';
 
 class LoginViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
@@ -28,21 +29,28 @@ class LoginViewModel extends BaseModel {
       if (result) {
         Get.toNamed("/home");
       } else {
-        await _dialogService.showDialog(
-          title: 'Login Failure',
-          description: 'General login failure. Please try again later',
-        );
+        Get.defaultDialog(
+            title: 'General',
+            radius: 5.0,
+            middleText: 'General login failure. Please try again later',);
       }
     } else {
-      await _dialogService.showDialog(
-        title: 'Login Failure',
-        description: result,
-      );
+       Get.defaultDialog(title: 'Login Failure',
+          radius: 5.0,
+          middleText: result,
+          actions: [
+            RaisedButton(
+              onPressed: ()=>Get.back(),
+              child: Text("OK",
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.black,)
+          ],
+          );
     }
   }
 
   void navigateToSignUp() {
     Get.offNamed("/signUp");
-   // _navigationService.navigateTo(SignUpViewRoute);
   }
 }

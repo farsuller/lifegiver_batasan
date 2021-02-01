@@ -57,19 +57,19 @@ class AuthenticationService {
   }
 
   Future<bool> isUserLoggedIn() async {
-    var user = await _firebaseAuth.currentUser();
+    var user = _firebaseAuth.currentUser;
      await _populateCurrentUser(user);
     return user != null;
   }
 
-  Future _populateCurrentUser(FirebaseUser user) async {
+  Future _populateCurrentUser(User user) async {
     if (user != null) {
       _currentUser = await _firestoreService.getUser(user.uid);
     }
   }
 
   Future<bool> signOutUser() async {
-    FirebaseUser user = await _firebaseAuth.currentUser();
+   User user = await _firebaseAuth.currentUser;
    // print(user.providerData[1].providerId);
     // if (user.providerData[1].providerId == 'google.com') {
     //   await gooleSignIn.disconnect();

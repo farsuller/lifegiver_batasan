@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -12,9 +14,16 @@ import 'ui/screens/profile/lifegroup/camera_screen.dart';
 import 'ui/screens/profile/lifegroup/lifegroup_screen.dart';
 import 'ui/screens/profile/satelife/satelife_profile.dart';
 
+bool useFireStoreEmulator = false;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Register all the models and services before the app starts
+  await Firebase.initializeApp();
+  if (useFireStoreEmulator) {
+    FirebaseFirestore.instance.settings = Settings(
+        host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false);
+  }
   setupLocator();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])

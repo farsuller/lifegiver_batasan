@@ -8,11 +8,13 @@ class BusyButton extends StatefulWidget {
   final String title;
   final Function onPressed;
   final bool enabled;
+  final double height;
+  final double width;
   const BusyButton(
       {@required this.title,
       this.busy = false,
       @required this.onPressed,
-      this.enabled = true});
+      this.enabled = true,  @required this.height, @required this.width});
 
   @override
   _BusyButtonState createState() => _BusyButtonState();
@@ -25,8 +27,8 @@ class _BusyButtonState extends State<BusyButton> {
       onTap: widget.onPressed,
       child: InkWell(
         child: AnimatedContainer(
-          height: widget.busy ? 40 : null,
-          width: widget.busy ? 40 : null,
+          height: widget.busy ? widget.height : null,
+          width: widget.busy ? widget.width : null,
           duration: const Duration(milliseconds: 300),
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(

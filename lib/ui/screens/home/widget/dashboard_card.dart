@@ -4,9 +4,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:lifegiver_batasan/ui/widgets/custom_shard_painter.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 

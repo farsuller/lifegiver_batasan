@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:lifegiver_batasan/locator.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
 import 'package:lifegiver_batasan/models/batasan_user.dart';
 import 'firestore_service.dart';
 
@@ -69,7 +69,7 @@ class AuthenticationService {
   }
 
   Future<bool> signOutUser() async {
-   User user = await _firebaseAuth.currentUser;
+  // User user = await _firebaseAuth.currentUser;
    // print(user.providerData[1].providerId);
     // if (user.providerData[1].providerId == 'google.com') {
     //   await gooleSignIn.disconnect();

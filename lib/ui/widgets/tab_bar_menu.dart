@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/constants/constants.dart';
 
 class TabBarMenus extends StatelessWidget {
   const TabBarMenus({

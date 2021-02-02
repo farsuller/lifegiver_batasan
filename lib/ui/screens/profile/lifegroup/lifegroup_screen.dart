@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
 import 'package:lifegiver_batasan/ui/viewmodels/sunday_service_vm.dart';

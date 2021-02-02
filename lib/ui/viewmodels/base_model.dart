@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:lifegiver_batasan/locator.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
 import 'package:lifegiver_batasan/models/batasan_user.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
 

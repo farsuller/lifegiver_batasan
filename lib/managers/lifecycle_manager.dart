@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/locator.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
 import 'package:lifegiver_batasan/services/background_fetch_service.dart';
 import 'package:lifegiver_batasan/services/location_service.dart';
 import 'package:lifegiver_batasan/services/stoppable_service.dart';

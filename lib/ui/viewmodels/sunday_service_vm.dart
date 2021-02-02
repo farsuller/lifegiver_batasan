@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifegiver_batasan/locator.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'package:lifegiver_batasan/services/firestore_service.dart';

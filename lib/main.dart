@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/managers/lifecycle_manager.dart';
 import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
-import 'package:lifegiver_batasan/ui/screens/login_screen.dart';
 import 'package:lifegiver_batasan/ui/screens/profile/sunday_service/sunday_service_profile_screen.dart';
 import 'package:lifegiver_batasan/ui/screens/signup_screen.dart';
 import 'package:lifegiver_batasan/ui/screens/startup_view.dart';
-import 'locator.dart';
+import 'base/locator.dart';
+import 'ui/screens/login/login_screen.dart';
 import 'ui/screens/profile/lifegroup/camera_screen.dart';
 import 'ui/screens/profile/lifegroup/lifegroup_screen.dart';
 import 'ui/screens/profile/satelife/satelife_profile.dart';
@@ -66,3 +66,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+

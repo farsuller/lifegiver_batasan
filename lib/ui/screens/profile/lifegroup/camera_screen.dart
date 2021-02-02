@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/ui/screens/profile/lifegroup/widget/camera_detector_widget.dart';
-import 'package:lifegiver_batasan/ui/screens/profile/lifegroup/widget/face_detector_widget.dart';
-
-import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
-import 'package:stacked/stacked.dart';
-import 'widget/face_painters_widget.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
-import 'package:flutter/services.dart';
 
 import 'widget/camera_utils.dart';
 
@@ -41,10 +35,11 @@ class _CameraScreenState extends State<CameraScreen> {
   void initState() {
     super.initState();
 
-   _initializeCamera();
+    _initializeCamera();
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _camera.dispose();
     print("$_camera disposed");
@@ -54,12 +49,12 @@ class _CameraScreenState extends State<CameraScreen> {
     try {
       final gpuDelegateV2 = tfl.GpuDelegateV2(
           options: tfl.GpuDelegateOptionsV2(
-            false,
-            tfl.TfLiteGpuInferenceUsage.fastSingleAnswer,
-            tfl.TfLiteGpuInferencePriority.minLatency,
-            tfl.TfLiteGpuInferencePriority.auto,
-            tfl.TfLiteGpuInferencePriority.auto,
-          ));
+        false,
+        tfl.TfLiteGpuInferenceUsage.fastSingleAnswer,
+        tfl.TfLiteGpuInferencePriority.minLatency,
+        tfl.TfLiteGpuInferencePriority.auto,
+        tfl.TfLiteGpuInferencePriority.auto,
+      ));
 
       var interpreterOptions = tfl.InterpreterOptions()
         ..addDelegate(gpuDelegateV2);
@@ -78,7 +73,8 @@ class _CameraScreenState extends State<CameraScreen> {
       description.sensorOrientation,
     );
 
-    _camera = CameraController(description, ResolutionPreset.ultraHigh, enableAudio: false);
+    _camera = CameraController(description, ResolutionPreset.ultraHigh,
+        enableAudio: false);
     await _camera.initialize();
     await Future.delayed(Duration(milliseconds: 500));
     tempDir = await getApplicationDocumentsDirectory();
@@ -93,14 +89,14 @@ class _CameraScreenState extends State<CameraScreen> {
         String res;
         dynamic finalResult = Multimap<String, Face>();
         detect(image, _getDetectionMethod(), rotation).then(
-              (dynamic result) async {
+          (dynamic result) async {
             if (result.length == 0)
               _faceFound = false;
             else
               _faceFound = true;
             Face _face;
             imglib.Image convertedImage =
-            _convertCameraImage(image, _direction);
+                _convertCameraImage(image, _direction);
             for (_face in result) {
               double x, y, w, h;
               x = (_face.boundingBox.left - 10);
@@ -123,7 +119,7 @@ class _CameraScreenState extends State<CameraScreen> {
             _isDetecting = false;
           },
         ).catchError(
-              (_) {
+          (_) {
             _isDetecting = false;
           },
         );
@@ -139,7 +135,6 @@ class _CameraScreenState extends State<CameraScreen> {
     );
     return faceDetector.processImage;
   }
-
 
   void _toggleCameraDirection() async {
     if (_direction == CameraLensDirection.back) {
@@ -160,51 +155,51 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Face recognition'),
-          actions: <Widget>[
-            PopupMenuButton<Choice>(
-              onSelected: (Choice result) {
-                if (result == Choice.delete)
-                  _resetFile();
-                else
-                  _viewLabels();
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<Choice>>[
-                const PopupMenuItem<Choice>(
-                  child: Text('View Saved Faces'),
-                  value: Choice.view,
-                ),
-                const PopupMenuItem<Choice>(
-                  child: Text('Remove all faces'),
-                  value: Choice.delete,
-                )
-              ],
-            ),
-          ],
-        ),
-        body: CameraDetectorWidget(camera: _camera, scanResults: _scanResults),
-        floatingActionButton:
-        Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          FloatingActionButton(
-            backgroundColor: (_faceFound) ? Colors.blue : Colors.blueGrey,
-            child: Icon(Icons.add),
-            onPressed: () {
-              if (_faceFound) return _addLabel();
+      appBar: AppBar(
+        title: const Text('Face recognition'),
+        actions: <Widget>[
+          PopupMenuButton<Choice>(
+            onSelected: (Choice result) {
+              if (result == Choice.delete)
+                _resetFile();
+              else
+                _viewLabels();
             },
-            heroTag: null,
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<Choice>>[
+              const PopupMenuItem<Choice>(
+                child: Text('View Saved Faces'),
+                value: Choice.view,
+              ),
+              const PopupMenuItem<Choice>(
+                child: Text('Remove all faces'),
+                value: Choice.delete,
+              )
+            ],
           ),
-          SizedBox(
-            height: 10,
-          ),
-          FloatingActionButton(
-            onPressed: _toggleCameraDirection,
-            heroTag: null,
-            child: _direction == CameraLensDirection.back
-                ? const Icon(Icons.camera_front)
-                : const Icon(Icons.camera_rear),
-          ),
-        ]),
+        ],
+      ),
+      body: CameraDetectorWidget(camera: _camera, scanResults: _scanResults),
+      floatingActionButton:
+          Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        FloatingActionButton(
+          backgroundColor: (_faceFound) ? Colors.blue : Colors.blueGrey,
+          child: Icon(Icons.add),
+          onPressed: () {
+            if (_faceFound) return _addLabel();
+          },
+          heroTag: null,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        FloatingActionButton(
+          onPressed: _toggleCameraDirection,
+          heroTag: null,
+          child: _direction == CameraLensDirection.back
+              ? const Icon(Icons.camera_front)
+              : const Icon(Icons.camera_rear),
+        ),
+      ]),
     );
   }
 
@@ -273,14 +268,14 @@ class _CameraScreenState extends State<CameraScreen> {
     jsonFile.deleteSync();
   }
 
-  Future _viewLabels() async{
+  Future _viewLabels() async {
     setState(() {
       _camera.dispose();
       _camera = null;
     });
     String name;
 
-   await Get.defaultDialog(
+    await Get.defaultDialog(
       title: 'Saved Recognized Faces',
       content: Expanded(
         child: Container(
@@ -293,7 +288,9 @@ class _CameraScreenState extends State<CameraScreen> {
                 name = data.keys.elementAt(index);
                 return new Column(
                   children: <Widget>[
-                    Text(name,),
+                    Text(
+                      name,
+                    ),
                   ],
                 );
               }),
@@ -309,7 +306,6 @@ class _CameraScreenState extends State<CameraScreen> {
         )
       ],
     );
-
   }
 
   Future _addLabel() async {
@@ -318,8 +314,8 @@ class _CameraScreenState extends State<CameraScreen> {
       _camera = null;
     });
 
-   await Get.defaultDialog(
-      barrierDismissible: false,
+    await Get.defaultDialog(
+        barrierDismissible: false,
         title: 'Add Face',
         content: new Row(
           children: <Widget>[
@@ -350,8 +346,7 @@ class _CameraScreenState extends State<CameraScreen> {
               //  Navigator.pop(context);
             },
           )
-        ]
-    );
+        ]);
   }
 
   void _handle(String text) {
@@ -360,6 +355,3 @@ class _CameraScreenState extends State<CameraScreen> {
     _initializeCamera();
   }
 }
-
-
-

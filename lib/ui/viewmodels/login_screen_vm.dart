@@ -1,16 +1,15 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:lifegiver_batasan/locator.dart';
+import 'package:lifegiver_batasan/base/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
-import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'base_model.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
-  final DialogService _dialogService = locator<DialogService>();
+
 
   Future login({
     @required String email,

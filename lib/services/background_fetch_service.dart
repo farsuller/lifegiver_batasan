@@ -1,5 +1,4 @@
 
-import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/services/stoppable_service.dart';
 
 class BackgroundFetchService extends StoppableService{

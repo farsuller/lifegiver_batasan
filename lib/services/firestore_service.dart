@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:lifegiver_batasan/models/batasan_user.dart';
-import 'package:lifegiver_batasan/models/lifegroup.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
 
 

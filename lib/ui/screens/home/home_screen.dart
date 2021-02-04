@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/announcement_tile.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/dashboard_reporting.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
-import 'package:lifegiver_batasan/ui/viewmodels/home_screen_vm.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/home/viewmodel/home_screen_vm.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 

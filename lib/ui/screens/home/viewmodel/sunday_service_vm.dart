@@ -4,7 +4,7 @@ import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasa
 import 'package:lifegiver_batasan/models/profile.dart';
 import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'package:lifegiver_batasan/services/firestore_service.dart';
-import 'package:lifegiver_batasan/ui/viewmodels/base_model.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/base_model.dart';
 
 
 class ProfileViewModel extends BaseModel{

@@ -1,9 +1,8 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/base/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
-import 'base_model.dart';
+import '../../../../base/base_model.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewModel extends BaseModel {
@@ -29,27 +28,35 @@ class LoginViewModel extends BaseModel {
         Get.toNamed("/home");
       } else {
         Get.defaultDialog(
-            title: 'General',
-            radius: 5.0,
-            middleText: 'General login failure. Please try again later',);
+          title: 'General',
+          radius: 5.0,
+          middleText: 'General login failure. Please try again later',
+        );
       }
     } else {
-       Get.defaultDialog(title: 'Login Failure',
-          radius: 5.0,
-          middleText: result,
-          actions: [
-            RaisedButton(
-              onPressed: ()=>Get.back(),
-              child: Text("OK",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Colors.black,)
-          ],
-          );
+      Get.defaultDialog(
+        title: 'Login Failure',
+        radius: 5.0,
+        middleText: result,
+        actions: [
+          RaisedButton(
+            onPressed: () => Get.back(),
+            child: Text(
+              "OK",
+              style: TextStyle(color: Colors.white),
+            ),
+            color: Colors.black,
+          )
+        ],
+      );
     }
   }
 
   void navigateToSignUp() {
     Get.offNamed("/signUp");
+  }
+
+  void navigateToForgotPassword() {
+    Get.offNamed("/forgotPassword");
   }
 }

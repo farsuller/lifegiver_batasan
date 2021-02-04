@@ -5,7 +5,7 @@ import 'package:lifegiver_batasan/services/authentication_service.dart';
 
 
 
-import 'base_model.dart';
+import '../../../../base/base_model.dart';
 
 class HomeViewModel extends BaseModel {
   final AuthenticationService _authenticationService =

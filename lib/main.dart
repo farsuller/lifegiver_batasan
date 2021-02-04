@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/managers/lifecycle_manager.dart';
+import 'package:lifegiver_batasan/ui/screens/forgot/forgot_password.dart';
 import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
-import 'package:lifegiver_batasan/ui/screens/profile/sunday_service/sunday_service_profile_screen.dart';
-import 'package:lifegiver_batasan/ui/screens/signup_screen.dart';
-import 'package:lifegiver_batasan/ui/screens/startup_view.dart';
 import 'base/locator.dart';
+import 'ui/screens/home/profile/lifegroup/camera_screen.dart';
+import 'ui/screens/home/profile/lifegroup/lifegroup_screen.dart';
+import 'ui/screens/home/profile/satelife/satelife_profile.dart';
+import 'ui/screens/home/profile/sunday_service/sunday_service_profile_screen.dart';
 import 'ui/screens/login/login_screen.dart';
-import 'ui/screens/profile/lifegroup/camera_screen.dart';
-import 'ui/screens/profile/lifegroup/lifegroup_screen.dart';
-import 'ui/screens/profile/satelife/satelife_profile.dart';
+import 'ui/screens/signup/signup_screen.dart';
+import 'ui/screens/startup_view.dart';
 
 bool useFireStoreEmulator = false;
 
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LifeCycleManager(
       child: GetMaterialApp(
+        defaultTransition: Transition.fadeIn,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primarySwatch: Colors.amber,
@@ -55,6 +57,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: "/startView", page: () => StartUpView()),
           GetPage(name: "/login", page: () => LoginView()),
           GetPage(name: "/signUp", page: () => SignUpView()),
+          GetPage(name: "/forgotPassword", page: () => ForgotPasswordScreen()),
           GetPage(name: "/home", page: () => HomeScreen()),
           GetPage(name: "/service_profile", page: () => SundayServiceProfileScreen()),
           GetPage(name: "/lifegroup_profile", page: () => LifegroupProfileScreen()),

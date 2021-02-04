@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifegiver_batasan/ui/screens/profile/lifegroup/widget/camera_detector_widget.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -10,6 +9,7 @@ import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
 
+import 'widget/camera_detector_widget.dart';
 import 'widget/camera_utils.dart';
 
 class CameraScreen extends StatefulWidget {

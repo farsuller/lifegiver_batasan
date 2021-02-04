@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
 
-import 'base_model.dart';
+import '../../base/base_model.dart';
 
 class StartUpViewModel extends BaseModel {
   final AuthenticationService _authenticationService = locator<AuthenticationService>();

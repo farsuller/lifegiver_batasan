@@ -56,9 +56,6 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
 
-        ndk {
-            abiFilters "armeabi", "x86", "armeabi-v7a"
-        }
     }
     signingConfigs{
         release{

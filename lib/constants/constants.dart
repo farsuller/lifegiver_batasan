@@ -8,11 +8,11 @@ var blushEnd = Color(0xffF15F79);
 var cosmicFusionStart = Color(0xffb372db);
 var cosmicFusionEnd = Color(0xff8949ba);
 
-var earthlyStart = Color(0xff649173);
-var earthlyEnd = Color(0xffdbd5a4);
+var earthlyStart = Color(0xff4dd484);
+var earthlyEnd = Color(0xffaaf48f);
 
-var mojitoStart = Color(0xff1d976c);
-var mojitoEnd = Color(0xff93f9b9);
+var mojitoStart = Color(0xff3bca77);
+var mojitoEnd = Color(0xff8ac874);
 
 var quepalStart = Color(0xff11998e);
 var quepalEnd = Color(0xff38ef7d);

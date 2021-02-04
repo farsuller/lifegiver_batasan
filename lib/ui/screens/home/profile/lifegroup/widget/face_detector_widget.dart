@@ -1,6 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/ui/screens/profile/lifegroup/widget/face_painters_widget.dart';
+
+import 'face_painters_widget.dart';
+
 
 class FaceDetectorWidget extends StatelessWidget {
   const FaceDetectorWidget({

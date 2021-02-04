@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/constants.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/dashboard_card.dart';
-import 'package:lifegiver_batasan/ui/viewmodels/home_screen_vm.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/home/viewmodel/home_screen_vm.dart';
 import 'package:stacked/stacked.dart';
 
 

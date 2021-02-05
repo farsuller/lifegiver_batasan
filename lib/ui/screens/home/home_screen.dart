@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: Container(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.asset("assets/lifegiver_logo.jpg",),
+                    child: Image.asset("assets/images/lifegiver_logo.jpg",),
                   )),
              // title: TabBarMenus(),
               actions: <Widget>[

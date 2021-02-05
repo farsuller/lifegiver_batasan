@@ -10,7 +10,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Batasan Reporting"
+        android:label="Lifegiver Batasan"
         android:icon="@drawable/ic_lifegiver">
         <activity
             android:name=".MainActivity"

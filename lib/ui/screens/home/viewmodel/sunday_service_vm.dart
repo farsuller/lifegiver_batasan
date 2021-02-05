@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
+import 'package:lifegiver_batasan/base/base_model.dart';
+import 'package:lifegiver_batasan/base/locator.dart';
 import 'package:lifegiver_batasan/models/profile.dart';
-import 'package:lifegiver_batasan/services/dialog_service.dart';
 import 'package:lifegiver_batasan/services/firestore_service.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/base_model.dart';
+
 
 
 class ProfileViewModel extends BaseModel{
 
   final FirestoreService _firestoreService = locator<FirestoreService>();
-  final DialogService _dialogService = locator<DialogService>();
+
 
   Profile _setupProfile;
 
@@ -115,14 +115,16 @@ class ProfileViewModel extends BaseModel{
     setBusy(false);
 
     if (result is String) {
-      await _dialogService.showDialog(
-        title: 'Cound not create User Profile',
-        description: result,
+      Get.defaultDialog(
+        title: 'Can\'t create User Profile',
+        radius: 5.0,
+        middleText: result,
       );
     } else {
-      await _dialogService.showDialog(
-        title: 'User Profile',
-        description: 'Your profile has been created for immediate report.',
+      Get.defaultDialog(
+        title: 'Report Sent',
+        radius: 5.0,
+        middleText: 'Your profile has been created for immediate report.',
       );
     }
     Get.toNamed("/home");

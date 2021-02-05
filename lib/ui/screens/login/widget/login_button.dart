@@ -52,12 +52,8 @@ class LoginButton extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       message: Text('Logging in please wait...',style: TextStyle(color: Colors.white),),
-                      icon: Icon(
-                        Icons.info,
-                        color: Colors.black,
-                      ),
+                      icon: Icon(Icons.info, color: Colors.black,),
                       shouldIconPulse: false,
-                      showProgressIndicator: true,
                     ),
                   );
                 },

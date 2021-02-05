@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/managers/lifecycle_manager.dart';
+import 'package:lifegiver_batasan/ui/screens/errors/1_no_connection.dart';
 import 'package:lifegiver_batasan/ui/screens/forgot/forgot_password.dart';
 import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
 import 'base/locator.dart';
@@ -62,7 +66,8 @@ class MyApp extends StatelessWidget {
           GetPage(name: "/service_profile", page: () => SundayServiceProfileScreen()),
           GetPage(name: "/lifegroup_profile", page: () => LifegroupProfileScreen()),
           GetPage(name: "/satelife_profile", page: () => SatelifeProfileScreen()),
-          GetPage(name: "/detector_camera", page: () => CameraScreen())
+          GetPage(name: "/detector_camera", page: () => CameraScreen()),
+          GetPage(name: "/noConnection", page: () => NoConnectionScreen())
         ],
         initialRoute: "/startView",
       ),

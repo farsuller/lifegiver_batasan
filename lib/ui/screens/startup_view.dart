@@ -25,7 +25,7 @@ class StartUpView extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   height: 100,
-                  child: Image.asset('assets/lifegiver_logo.jpg'),
+                  child: Image.asset('assets/images/lifegiver_logo.jpg'),
                 ),
                 SizedBox(height: 100,),
                 CircularProgressIndicator(

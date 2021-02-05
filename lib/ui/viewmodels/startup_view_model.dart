@@ -1,7 +1,7 @@
-
 import 'package:get/get.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/base/locator.dart';
+import 'package:lifegiver_batasan/base/locator.dart';
 import 'package:lifegiver_batasan/services/authentication_service.dart';
+import 'package:lifegiver_batasan/services/connection_service.dart';
 
 import '../../base/base_model.dart';
 

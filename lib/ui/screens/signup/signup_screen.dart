@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifegiver_batasan/constants/constants.dart';
+import 'package:lifegiver_batasan/ui/screens/shared/wave_background.dart';
 import 'package:lifegiver_batasan/ui/screens/signup/widget/create_account_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
-import '../login/widget/draw_clip.dart';
+import '../shared/draw_clip.dart';
 import '../shared/ui_helpers.dart';
 import 'viewmodel/signup_screen_vm.dart';
 import 'widget/back_login_button.dart';
@@ -54,58 +55,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
           body: Stack(
               overflow: Overflow.clip,
             children:[
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (BuildContext context, Widget child) {
-                  return ClipPath(
-                    clipper: DrawClip3(_controller.value),
-                    child: Container(
-                      height: SizeConfig.screenHeight * 0.6,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight,
-                            colors: [quepalStart, quepalEnd]),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (BuildContext context, Widget child) {
-                  return ClipPath(
-                    clipper: DrawClip(_controller.value),
-                    child: Container(
-                      height: SizeConfig.screenHeight * 0.5,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight,
-                            colors: [mojitoStart, mojitoEnd]),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (BuildContext context, Widget child) {
-                  return ClipPath(
-                    clipper: DrawClip2(_controller.value),
-                    child: Container(
-                      height: SizeConfig.screenHeight * 0.4,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight,
-                            colors: [earthlyStart, earthlyEnd]),
-                      ),
-                    ),
-                  );
-                },
-              ),
-
+              WaveBackground(controller: _controller),
               Padding(
                 padding:  EdgeInsets.symmetric(
                     horizontal: SizeConfig.screenWidth * 0.02,

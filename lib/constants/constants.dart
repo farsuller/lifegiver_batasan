@@ -8,6 +8,21 @@ var blushEnd = Color(0xffF15F79);
 var cosmicFusionStart = Color(0xffb372db);
 var cosmicFusionEnd = Color(0xff8949ba);
 
+var purple01 = Color(0xffd853ca);
+var purple02 = Color(0xff964AF3);
+
+var purpledark01 = Color(0xff9e3ae5);
+var purpledark02 = Color(0xff8517d4);
+
+var purpledark03 = Color(0xff8335b5);
+var purpledark04 = Color(0xff7517b8);
+
+var purplelight01 = Color(0xffd853ca);
+var purplelight02 = Color(0xffb824d2);
+
+var purplelight03 = Color(0xffbf63b5);
+var purplelight04 = Color(0xffae22a1);
+
 var earthlyStart = Color(0xff4dd484);
 var earthlyEnd = Color(0xffaaf48f);
 

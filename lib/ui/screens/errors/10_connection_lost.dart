@@ -8,7 +8,7 @@ class ConnectionLostScreen extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            "assets/images/10_Connection Lost.png",
+            "assets/error_states/10_Connection Lost.png",
             fit: BoxFit.cover,
           ),
           Positioned(

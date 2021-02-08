@@ -15,6 +15,20 @@ class FirestoreService {
   final StreamController<List<String>> _leadersController = StreamController<List<String>>.broadcast();
   final StreamController<List<String>> _networkController = StreamController<List<String>>.broadcast();
   final StreamController<List<dynamic>> _lifegroupController = StreamController<List<dynamic>>.broadcast();
+
+  final StreamController<List<dynamic>> _announcementController = StreamController<List<dynamic>>.broadcast();
+  final CollectionReference _announcementReference = FirebaseFirestore.instance.collection("announcements");
+
+
+  Stream listenAnnouncementImages(){
+    _announcementReference.snapshots().listen((event) {
+      var announce = event.docs.map((e) => e["url"]).toList();
+
+      _announcementController.add(announce);
+    });
+    return _announcementController.stream;
+  }
+
   Stream listenLeadersData(){
     _leadersCollectionReference.snapshots().listen((event) {
       var leaders = event.docs.map((e) => e.id).toList();

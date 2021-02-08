@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/models/attendance.dart';
-import 'package:lifegiver_batasan/requests/api_client.dart';
+import 'package:lifegiver_batasan/http/api_client.dart';
 import 'package:lifegiver_batasan/ui/screens/home/attendance_list.dart';
 
 

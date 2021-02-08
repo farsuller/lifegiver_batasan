@@ -25,7 +25,7 @@ class LoginViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        Get.toNamed("/home");
+        Get.offNamed("/home");
       } else {
         Get.defaultDialog(
           title: 'General',

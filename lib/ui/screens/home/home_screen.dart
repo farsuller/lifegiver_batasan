@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     SizeConfig().init(context);
 
     return ViewModelBuilder<HomeViewModel>.reactive(
+      onModelReady: (model)=> model.listenAnnouncement(),
       viewModelBuilder: ()=> HomeViewModel(),
       builder: (context, model, child) => DefaultTabController(
         length: 4,
@@ -52,15 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: SizeConfig.screenWidth * 0.04,
-                                  bottom: 10.0),
-                              child: Text("Announcements",style: TextStyle(fontSize: 20.0),),
-                            ),
                             AnnouncementTile(),
                             DashboardReporting()
-
                           ],
                         ),
                       ),

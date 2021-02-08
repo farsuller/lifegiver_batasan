@@ -80,7 +80,7 @@ class _DashboardCardState extends State<DashboardCard> {
                         children:[
                           Padding(
                             padding: const EdgeInsets.only(left:10.0,),
-                            child: Image.asset("assets/lifegiver_logo.jpg",
+                            child: Image.asset("assets/images/lifegiver_logo.jpg",
                               height: SizeConfig.screenHeight * 0.09,
                               width: SizeConfig.screenWidth * 0.09,),
                           ),

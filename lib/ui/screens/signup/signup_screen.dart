@@ -12,6 +12,7 @@ import '../shared/draw_clip.dart';
 import '../shared/ui_helpers.dart';
 import 'viewmodel/signup_screen_vm.dart';
 import 'widget/back_login_button.dart';
+import 'widget/email_password_signup_card.dart';
 
 
 class SignUpView extends StatefulWidget {
@@ -77,35 +78,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.bold),),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: Card(
-                          elevation: 5.0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 20.0,bottom: 10, left: 20.0, right: 20.0),
-                              child: Column(
-                                children: [
-                                  InputField(
-                                    placeholder: 'Email',
-                                    controller: emailController,
-                                  ),
-                                  verticalSpaceSmall,
-                                  InputField(
-                                    placeholder: 'Password',
-                                    password: true,
-                                    controller: passwordController,
-                                    additionalNote: 'Password has to be a minimum of 6 characters.',
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      EmailPasswordSigUpCard(emailController: emailController, passwordController: passwordController),
                       verticalSpaceLarge,
                       CreateAccountButton(emailController: emailController, passwordController: passwordController),
                       verticalSpaceSmall,

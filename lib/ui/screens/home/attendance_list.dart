@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/models/attendance.dart';
-import 'package:lifegiver_batasan/requests/api_client.dart';
+import 'package:lifegiver_batasan/http/api_client.dart';
 
 class AttendanceListPage extends StatefulWidget {
   AttendanceListPage({Key key, this.title}) : super(key: key);

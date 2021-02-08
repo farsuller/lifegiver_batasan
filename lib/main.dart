@@ -1,7 +1,5 @@
-import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -67,7 +65,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: "/lifegroup_profile", page: () => LifegroupProfileScreen()),
           GetPage(name: "/satelife_profile", page: () => SatelifeProfileScreen()),
           GetPage(name: "/detector_camera", page: () => CameraScreen()),
-          GetPage(name: "/noConnection", page: () => NoConnectionScreen())
+          GetPage(name: "/noConnection", page: () => NoConnectionScreen()),
         ],
         initialRoute: "/startView",
       ),

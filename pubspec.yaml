@@ -67,6 +67,8 @@ dependencies:
   tflite_flutter: ^0.5.0
   image: ^2.1.19
 
+  flutter_native_admob: ^2.1.0+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

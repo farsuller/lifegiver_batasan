@@ -55,6 +55,10 @@ class AuthenticationService {
       return e.message;
     }
   }
+  // Reset Password
+  Future sendPasswordResetEmail(String email) async {
+    return _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
 
   Future<bool> isUserLoggedIn() async {
     var user = _firebaseAuth.currentUser;

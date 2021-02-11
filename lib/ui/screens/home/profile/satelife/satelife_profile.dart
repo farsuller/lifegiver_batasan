@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
-import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/ui/screens/home/viewmodel/sunday_service_vm.dart';
+import 'package:lifegiver_batasan/constants/constants.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
+import 'package:lifegiver_batasan/ui/screens/home/viewmodel/sunday_service_vm.dart';
 import 'package:lifegiver_batasan/ui/widgets/expansion_list.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
+
 import 'package:stacked/stacked.dart';
 
 class SatelifeProfileScreen extends StatelessWidget {

@@ -64,3 +64,35 @@ var dashboardDataItems = [
       Color(0xffD76EF5), Color(0xff8F7AFE),cosmicFusionStart, cosmicFusionEnd),
 
 ];
+
+// Box Decorations
+
+BoxDecoration fieldDecoration = BoxDecoration(
+    border: Border.all(color: quepalStart,width: 2),
+    borderRadius: BorderRadius.circular(2), color: Colors.white);
+
+BoxDecoration disabledFieldDecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(5), color: Colors.grey[100]);
+
+// Field Variables
+
+const double fieldHeight = 55;
+const double smallFieldHeight = 40;
+const double inputFieldBottomMargin = 30;
+const double inputFieldSmallBottomMargin = 0;
+const EdgeInsets fieldPadding = const EdgeInsets.symmetric(horizontal: 15);
+const EdgeInsets largeFieldPadding =
+const EdgeInsets.symmetric(horizontal: 15, vertical: 15);
+
+// Text Variables
+const TextStyle buttonTitleTextStyle =
+const TextStyle(fontWeight: FontWeight.w700, color: Colors.white);
+
+const Color lightGrey = Color.fromARGB(255,61,63,69);
+const Color darkGrey = Color.fromARGB(255,18,18,19);
+const Color primaryColor =  Color.fromARGB(255, 9, 202, 172);
+const Color backgroundColor = Color.fromARGB(255, 26, 27, 30);
+
+const Color lifegiverColor = Color(0xff8BC34A);
+const Color secondaryColor = Color(0xff64DD17);
+const Color bgColor = Color(0xffffffff);

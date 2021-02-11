@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/shared_styles.dart';
+import 'package:lifegiver_batasan/constants/constants.dart';
 
 /// A button that shows a busy indicator in place of title
 class BusyButton extends StatefulWidget {

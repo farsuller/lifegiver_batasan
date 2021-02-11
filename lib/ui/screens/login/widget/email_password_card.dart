@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 
 class EmailPasswordCard extends StatelessWidget {

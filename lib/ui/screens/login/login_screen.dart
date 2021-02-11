@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lifegiver_batasan/bloc/bloc.dart';
-import 'package:lifegiver_batasan/ui/screens/errors/10_connection_lost.dart';
+import 'package:lifegiver_batasan/constants/constants.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
 import 'package:lifegiver_batasan/ui/screens/errors/1_no_connection.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/app_colors.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/wave_background.dart';
 import 'package:lifegiver_batasan/ui/widgets/text_link.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
 import 'viewmodel/login_screen_vm.dart';
 import 'widget/email_password_card.dart';
@@ -51,6 +49,8 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (context, model, child) => BlocProvider(

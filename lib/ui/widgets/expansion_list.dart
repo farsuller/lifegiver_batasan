@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/shared_styles.dart' as sharedStyles;
+import 'package:lifegiver_batasan/constants/constants.dart' as sharedStyles;
 
 class ExpansionList<T> extends StatefulWidget {
   final List<T> items;
@@ -40,7 +40,7 @@ class _ExpansionListState extends State<ExpansionList> {
           : widget.smallVersion
               ? sharedStyles.smallFieldHeight
               : startingHeight,
-      decoration: sharedStyles.fieldDecortaion.copyWith(
+      decoration: sharedStyles.fieldDecoration.copyWith(
         boxShadow: expanded
             ? [BoxShadow(blurRadius: 10, color: Colors.grey[300])]
             : null,

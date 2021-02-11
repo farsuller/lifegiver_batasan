@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/ui/widgets/custom_shard_painter.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/helper/ui_helper.dart';
 
 class DashboardCard extends StatefulWidget {
 

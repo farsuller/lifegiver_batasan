@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
 import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
 
 class EmailPasswordSigUpCard extends StatelessWidget {
@@ -26,6 +26,14 @@ class EmailPasswordSigUpCard extends StatelessWidget {
             padding: EdgeInsets.only(top: 20.0,bottom: 10, left: 20.0, right: 20.0),
             child: Column(
               children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 8.0,bottom: 20.0),
+                  child: Center(
+                    child: Container(
+                        height: 70,
+                        child: Image.asset('assets/images/batasan.png',)),
+                  ),
+                ),
                 InputField(
                   placeholder: 'Email',
                   controller: emailController,

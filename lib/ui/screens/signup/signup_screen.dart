@@ -1,15 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lifegiver_batasan/constants/constants.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/wave_background.dart';
 import 'package:lifegiver_batasan/ui/screens/signup/widget/create_account_button.dart';
-import 'package:lifegiver_batasan/ui/widgets/busy_button.dart';
-import 'package:lifegiver_batasan/ui/widgets/input_field.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
 import 'package:stacked/stacked.dart';
-import '../shared/draw_clip.dart';
-import '../shared/ui_helpers.dart';
 import 'viewmodel/signup_screen_vm.dart';
 import 'widget/back_login_button.dart';
 import 'widget/email_password_signup_card.dart';
@@ -59,8 +52,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
               WaveBackground(controller: _controller),
               Padding(
                 padding:  EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth * 0.02,
-                    vertical: SizeConfig.screenHeight * 0.05),
+                    horizontal: SizeConfig.screenWidth * 0.02,),
                 child: NotificationListener<OverscrollIndicatorNotification>(
                   onNotification: (overScroll){
                     overScroll.disallowGlow();
@@ -71,7 +63,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
                       SizedBox(
                         height: 150,
                         child:  Padding(
-                          padding: EdgeInsets.only(top: 8.0, left:10.0),
+                          padding: EdgeInsets.only(top: 20.0, left:10.0),
                           child: Text('Create Account',
                             style: TextStyle(color:Colors.white,
                                 fontSize: 38,
@@ -79,7 +71,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
                         ),
                       ),
                       EmailPasswordSigUpCard(emailController: emailController, passwordController: passwordController),
-                      verticalSpaceLarge,
+                      verticalSpaceMassive,
                       CreateAccountButton(emailController: emailController, passwordController: passwordController),
                       verticalSpaceSmall,
                       BackToLoginButton(),

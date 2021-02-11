@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/shared_styles.dart';
-import 'package:lifegiver_batasan/ui/screens/shared/ui_helpers.dart';
+import 'package:lifegiver_batasan/constants/constants.dart';
+import 'package:lifegiver_batasan/helper/ui_helper.dart';
+
 
 import 'note_text.dart';
 
@@ -61,7 +62,7 @@ class _InputFieldState extends State<InputField> {
           alignment: Alignment.centerLeft,
           padding: fieldPadding,
           decoration:
-              widget.isReadOnly ? disabledFieldDecortaion : fieldDecortaion,
+              widget.isReadOnly ? disabledFieldDecoration : fieldDecoration,
           child: Row(
             children: <Widget>[
               Expanded(

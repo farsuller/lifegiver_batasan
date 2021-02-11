@@ -9,6 +9,8 @@ import 'package:lifegiver_batasan/ui/screens/errors/1_no_connection.dart';
 import 'package:lifegiver_batasan/ui/screens/forgot/forgot_password.dart';
 import 'package:lifegiver_batasan/ui/screens/home/home_screen.dart';
 import 'base/locator.dart';
+import 'constants/check_build_flavor.dart';
+import 'helper/ui_helper.dart';
 import 'ui/screens/home/profile/lifegroup/camera_screen.dart';
 import 'ui/screens/home/profile/lifegroup/lifegroup_screen.dart';
 import 'ui/screens/home/profile/satelife/satelife_profile.dart';
@@ -20,6 +22,7 @@ import 'ui/screens/startup_view.dart';
 bool useFireStoreEmulator = false;
 
 void main() async {
+  BuildFlavor.checkDebugMode();
   WidgetsFlutterBinding.ensureInitialized();
   // Register all the models and services before the app starts
   await Firebase.initializeApp();
@@ -28,7 +31,6 @@ void main() async {
         host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false);
   }
   setupLocator();
-
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MyApp());
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
     return LifeCycleManager(
       child: GetMaterialApp(
         defaultTransition: Transition.fadeIn,
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: BuildFlavor.isDebug,
         theme: ThemeData(
             primarySwatch: Colors.amber,
             appBarTheme: const AppBarTheme(

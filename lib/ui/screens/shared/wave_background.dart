@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifegiver_batasan/constants/constants.dart';
 import 'package:lifegiver_batasan/ui/screens/shared/draw_clip.dart';
-import 'package:lifegiver_batasan/utils/size_config.dart';
+import 'file:///C:/Users/Service%20Unit/Desktop/FlutterProjects/lifegiver_batasan/lib/helper/ui_helper.dart';
 
 class WaveBackground extends StatelessWidget {
   const WaveBackground({

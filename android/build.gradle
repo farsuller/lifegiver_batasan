@@ -5,6 +5,8 @@ buildscript {
         jcenter()
     }
 
+    //for flutter apps, do not upgrade this gradle version beyond with this current 3.5.4
+    // to prevent conflicts of package versions on other libraries
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.4'
         classpath 'com.google.gms:google-services:4.3.5'

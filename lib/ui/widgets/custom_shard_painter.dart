@@ -20,10 +20,10 @@ class CustomCardShapePainter extends CustomPainter {
     ]);
 
     var path = Path()
-      ..moveTo(0, size.height)
-      ..lineTo(size.width - radius, size.height)
+      ..moveTo(0, size.height-5)
+      ..lineTo(size.width - radius, size.height-5)
       ..quadraticBezierTo(
-          size.width, size.height, size.width, size.height - radius)
+          size.width, size.height, size.width, size.height - radius-40)
       ..lineTo(size.width, radius)
       ..quadraticBezierTo(size.width, 0, size.width - radius, 0)
       ..lineTo(size.width - 1.5 * radius, 0)

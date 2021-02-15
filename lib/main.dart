@@ -24,7 +24,7 @@ bool useFireStoreEmulator = false;
 void main() async {
   BuildFlavor.checkDebugMode();
   WidgetsFlutterBinding.ensureInitialized();
-  // Register all the models and services before the app starts
+
   await Firebase.initializeApp();
   if (useFireStoreEmulator) {
     FirebaseFirestore.instance.settings = Settings(

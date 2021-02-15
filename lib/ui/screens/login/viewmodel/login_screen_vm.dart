@@ -27,28 +27,14 @@ class LoginViewModel extends BaseModel {
       if (result) {
         Get.offNamed("/home");
       } else {
-        Get.defaultDialog(
-          title: 'General',
-          radius: 5.0,
-          middleText: 'General login failure. Please try again later',
-        );
+        dialogDisplay(title:'Login',
+            message:'Login Failed. Please try again',
+            image:'assets/images/login_failed.png');
       }
     } else {
-      Get.defaultDialog(
-        title: 'Login Failure',
-        radius: 5.0,
-        middleText: result,
-        actions: [
-          RaisedButton(
-            onPressed: () => Get.back(),
-            child: Text(
-              "OK",
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.black,
-          )
-        ],
-      );
+      dialogDisplay(title:'Login',
+          message:result,
+          image:'assets/images/login_failed.png');
     }
   }
   // Reset Password
@@ -59,55 +45,43 @@ class LoginViewModel extends BaseModel {
 
     if (email.isEmail) {
       setBusy(false);
-
-        Get.defaultDialog(
-          title: 'Forgot Password Success',
-          radius: 5.0,
-          content: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(children:[
-              Image.asset('assets/images/email_image.png',height: 170,),
-              Text('Check your email to reset your password')]),
-          ),
-          actions: [
-            RaisedButton(
-              onPressed: () => Get.back(),
-              child: Text(
-                "OK",
-                style: TextStyle(color: Colors.white),
-              ),
-              color: Colors.black,
-            )
-          ],
-        );
-      return _authenticationService.sendPasswordResetEmail(email);
+      await _authenticationService.sendPasswordResetEmail(email).then((value) {
+        print(value.toString());
+        dialogDisplay(title:'Forgot Password',
+            message:'Check your email to reset your password',
+            image:'assets/images/email_image.png');
+      }).catchError((onError)=>
+          dialogDisplay(title:'Forgot Password',
+          message:'We can\'t find a user with this email address.\nThe user may have been deleted or does not really exist',
+          image:'assets/images/email_image.png'));
     } else {
-      Get.defaultDialog(
-        title: 'Forgot Password',
-        radius: 5.0,
-        content: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(children:[
-            Image.asset('assets/images/email_image.png',height: 170,),
-            Text('Email format is not valid')]),
-        ),
-        actions: [
-          RaisedButton(
-            onPressed: () => Get.back(),
-            child: Text(
-              "OK",
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.black,
-          )
-        ],
-      );
+      dialogDisplay(title:'Forgot Password',
+          message:'Email format is not valid',
+          image:'assets/images/email_image.png');
     }
 
   }
+  void dialogDisplay({String title, String message, String image}){
+    Get.defaultDialog(
+      title: title, radius: 5.0,
+      content: Padding(padding: const EdgeInsets.all(8.0),
+        child: Column(children:[
+          Image.asset(image,height: 170,),
+          Text(message)]),
+      ),
+      actions: [
+        RaisedButton(
+          onPressed: () => Get.back(),
+          child: Text("OK", style: TextStyle(color: Colors.white),),
+          color: Colors.black,
+        )
+      ],
+    );
+  }
 
-  Future<bool> onBackPressed() {
-    Get.offNamed("/login");
+  Future<bool> onBackPressed() async{
+    await Get.offNamed("/login");
+    return true;
   }
   void navigateToSignUp() {
     Get.offNamed("/signUp");

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_admob/flutter_native_admob.dart';
 import 'package:flutter_native_admob/native_admob_controller.dart';
-import 'package:get/get.dart';
 import 'package:lifegiver_batasan/constants/check_build_flavor.dart';
 import 'package:lifegiver_batasan/constants/constants.dart';
 import 'package:lifegiver_batasan/helper/ui_helper.dart';
@@ -54,30 +53,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
               children:[
                 WaveBackground(controller: _controller),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.screenWidth * 0.02),
+                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth * 0.02),
                   child: NotificationListener<OverscrollIndicatorNotification>(
-                    onNotification: (overScroll){
-                      overScroll.disallowGlow();
+                    onNotification: (overScroll){overScroll.disallowGlow();
                       return;
                     },
                     child: ListView(
                       children: <Widget>[
                         SizedBox(
-                          height: 150,
+                          height: 100,
                           child:  Padding(
                             padding: EdgeInsets.only(top: 20.0, left:10.0),
                             child: Text('Forgot Password',
-                              style: TextStyle(color:Colors.white,
-                                  fontSize: 38,
+                              style: TextStyle(color:Colors.white, fontSize: 38,
                                   fontWeight: FontWeight.bold),),
                           ),
                         ),
                         Padding(padding: EdgeInsets.only(left: 8.0, right: 8.0),
                           child: Card(elevation: 5.0,
                             child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),),
                               child: Padding(
                                 padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
                                 child: Column(
@@ -109,7 +104,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
                           height: 150,
                           color: Colors.white,
                           child: NativeAdmob(
-                            // Your ad unit id
                             adUnitID: BuildFlavor.adNativeIDForgotPassword,
                             controller: _nativeAdController,
                             type: NativeAdmobType.banner,
@@ -129,11 +123,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
                                 gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
-                                  colors: [
-                                    quepalStart,
-                                    mojitoStart,
-                                    earthlyStart,
-                                  ],
+                                  colors: [quepalStart, mojitoStart, earthlyStart,],
                                 ),
                               ),
                               child: Container(
@@ -159,9 +149,5 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
         ),
       ),
     );
-  }
-
-  Future<bool> _onBackPressed() {
-    Get.offNamed("/login",);
   }
 }

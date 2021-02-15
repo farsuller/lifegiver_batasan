@@ -71,7 +71,7 @@ class _SignUpViewState extends State<SignUpView> with SingleTickerProviderStateM
                         ),
                       ),
                       EmailPasswordSigUpCard(emailController: emailController, passwordController: passwordController),
-                      verticalSpaceMassive,
+                      verticalSpaceLarge,
                       CreateAccountButton(emailController: emailController, passwordController: passwordController),
                       verticalSpaceSmall,
                       BackToLoginButton(),

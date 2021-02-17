@@ -20,6 +20,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
 
   final emailController = TextEditingController();
   final _nativeAdController = NativeAdmobController();
+  bool showNative = true;
 
   AnimationController _controller;
   @override
@@ -32,6 +33,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
       lowerBound: -1,
       vsync: this,
     )..repeat();
+
+    _nativeAdController.setNonPersonalizedAds(false);
+    _nativeAdController.stateChanged.listen((event) {
+      if(event == AdLoadState.loadError){
+        setState(() {
+          showNative = false;
+        });
+      }
+      print("Here is native $event");
+    });
   }
 
   @override
@@ -98,9 +109,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
                           ),
                         ),
                         verticalSpaceMedium,
-                        AnimatedContainer(
+                        showNative == true ? AnimatedContainer(
                           duration: Duration(seconds: 1),
-                          //You Can Set Container Height
                           height: 150,
                           color: Colors.white,
                           child: NativeAdmob(
@@ -108,8 +118,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Single
                             controller: _nativeAdController,
                             type: NativeAdmobType.banner,
                           ),
-                        ),
-                        verticalSpaceLarge,
+                        ):verticalSpaceMassive,
+                        verticalSpaceMassive,
                         Padding(
                           padding: EdgeInsets.only(left: 10.0, right:10.0),
                           child: FlatButton(

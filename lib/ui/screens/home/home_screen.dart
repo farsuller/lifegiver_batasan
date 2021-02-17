@@ -1,9 +1,14 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_admob/flutter_native_admob.dart';
+import 'package:flutter_native_admob/native_admob_controller.dart';
+import 'package:lifegiver_batasan/constants/check_build_flavor.dart';
 import 'package:lifegiver_batasan/constants/constants.dart';
 import 'package:lifegiver_batasan/helper/ui_helper.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/announcement_tile.dart';
 import 'package:lifegiver_batasan/ui/screens/home/widget/dashboard_reporting.dart';
+import 'package:lifegiver_batasan/ui/screens/home/widget/verse_of_the_day.dart';
 import 'package:stacked/stacked.dart';
 
 import 'viewmodel/home_screen_vm.dart';
@@ -16,8 +21,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final  _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _nativeAdController = NativeAdmobController();
+  bool showNative = true;
   @override
   void initState() {
+    _nativeAdController.setNonPersonalizedAds(false);
+    _nativeAdController.stateChanged.listen((event) {
+      if(event == AdLoadState.loadError){
+        setState(() {
+          showNative = false;
+        });
+      }
+      print("Here is native $event");
+    });
     super.initState();
   }
 
@@ -61,23 +77,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AnnouncementTile(),
-                          Column(children: [
-                            Center(child: Text("Verse of the Day",
-                              style: TextStyle(
-                                  fontFamily: "Londrina Shadow",
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold),),),
-                            Center(child: Padding(
-                              padding: const EdgeInsets.only(left: 7.0, right: 7.0),
-                              child: Text("And he has given us this command: Whoever loves God must also love his brother. 1 John 4:21",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15.0,),),
-                            ),),
-                          ],
-                          ),
+                          VerseOfTheDay(),
+                          showNative == true ?AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            height: 100,
+                            child: NativeAdmob(
+                              adUnitID: BuildFlavor.adNativeIDHomeDashboard,
+                              controller: _nativeAdController,
+                              type: NativeAdmobType.banner,
+                            ),
+                          ):  verticalSpaceSmall,
                           DashboardReporting()
                         ],
                       ),
@@ -88,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-}
+  }
 
 
 

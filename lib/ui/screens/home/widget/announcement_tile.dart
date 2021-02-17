@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -24,9 +25,16 @@ class AnnouncementTile extends StatelessWidget {
                     child: Center(
                       child: snapshot.data.docs.length != null? Card(
                         elevation: 5,
-                        child: Image.network(
-                            snapshot.data.docs[index].data()["url"],
+                        child: CachedNetworkImage(
+                          imageUrl: snapshot.data.docs[index].data()["url"],
+                          placeholder: (context, url) => Container(height: 150, width: 300,
+                            child: Image.asset("assets/images/placeholder.png", fit: BoxFit.fill,),
+                          ),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
+                        // child: Image.network(
+                        //     snapshot.data.docs[index].data()["url"],
+                        // ),
                       ):Center(child:CircularProgressIndicator())
                     ),
                   );
